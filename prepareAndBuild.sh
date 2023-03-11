@@ -12,10 +12,10 @@ fi
 
 # Assets
 ./simutrans/src/android/AndroidPreBuild.sh
-mv AndroidData/* ../src/main/assets
+mv AndroidData ../src/main/assets
 
 # Build Android project
 cd ../..
 cp -r app/jni/SDL/android-project/app/src/main/java app/src/main
 cp -r app/jni/SDL/android-project/app/src/main/res app/src/main
-./gradlew buildCMakeDebug
+./gradlew installDebug
