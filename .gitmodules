@@ -2,3 +2,15 @@
 	path = app/jni/SDL
 	url = https://github.com/libsdl-org/SDL.git
 	branch = SDL2
+[submodule "app/jni/bzip2"]
+	path = app/jni/bzip2
+	url = https://gitlab.com/bzip2/bzip2.git
+[submodule "app/jni/zlib"]
+	path = app/jni/zlib
+	url = https://github.com/madler/zlib
+[submodule "app/jni/libpng"]
+	path = app/jni/libpng
+	url = https://github.com/glennrp/libpng
+[submodule "app/jni/zstd"]
+	path = app/jni/zstd
+	url = https://github.com/facebook/zstd
