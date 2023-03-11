@@ -30,15 +30,16 @@ function build_for_android {
   fi
 
   ABI_BUILD_DIR=${CMAKE_DIR}/build/${ABI}
+  OUTPUT_DIR=${LIBRARY_DIR}/prebuilt/${BUILD_TYPE_NAME}/${ABI}
 
   cmake -B${ABI_BUILD_DIR} \
         -H. \
         -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
         -DANDROID_ABI=${ABI} \
-        -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${LIBRARY_DIR}/prebuilt/${BUILD_TYPE_NAME}/${ABI}/ \
-        -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=${LIBRARY_DIR}/prebuilt/${BUILD_TYPE_NAME}/${ABI}/ \
-        -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=${LIBRARY_DIR}/prebuilt/${BUILD_TYPE_NAME}/${ABI}/ \
-        -DCMAKE_INSTALL_LIBDIR=${LIBRARY_DIR}/prebuilt/${BUILD_TYPE_NAME}/${ABI}/ \
+        -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=$OUTPUT_DIR \
+        -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=$OUTPUT_DIR \
+        -DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=$OUTPUT_DIR \
+        -DCMAKE_INSTALL_LIBDIR=$OUTPUT_DIR \
         -DANDROID_PLATFORM=${ANDROID_SYSTEM_VERSION} \
         -DCMAKE_ANDROID_STL=c++_shared \
         -DCMAKE_ANDROID_NDK=$ANDROID_NDK \
@@ -75,8 +76,10 @@ TOP_DIR=$(pwd)
 build_library $TOP_DIR/zlib $TOP_DIR/zlib
 build_library $TOP_DIR/bzip2 $TOP_DIR/bzip2 "-DENABLE_LIB_ONLY=ON"
 build_library $TOP_DIR/libpng $TOP_DIR/libpng
-cp $TOP_DIR/libpng/scripts/pnglibconf.h.prebuilt $TOPDIR/libpng/pnglibconf.h
+cp $TOP_DIR/libpng/scripts/pnglibconf.h.prebuilt $TOP_DIR/libpng/pnglibconf.h
 ZSTD_CMAKE_ARGS=("-DZSTD_BUILD_STATIC=OFF" "-DZSTD_BUILD_PROGRAMS=OFF")
 build_library $TOP_DIR/zstd $TOP_DIR/zstd/build/cmake ${ZSTD_CMAKE_ARGS[@]}
-SDL_CMAKE_ARGS=("-DHAVE_IMMINTRIN_H=OFF")
+
+# Not necessary, SLD is compiled as CMake subproject
+#SDL_CMAKE_ARGS=("-DHAVE_IMMINTRIN_H=OFF")
 #build_library $TOP_DIR/SDL $TOP_DIR/SDL  ${SDL_CMAKE_ARGS[@]}
