@@ -18,4 +18,4 @@ mv AndroidData ../src/main/assets
 cd ../..
 cp -r app/jni/SDL/android-project/app/src/main/java app/src/main
 cp -r app/jni/SDL/android-project/app/src/main/res app/src/main
-./gradlew installDebug
+./gradlew assembleDebug
