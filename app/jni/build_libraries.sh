@@ -61,7 +61,7 @@ function build_library {
   shift 2
   CMAKE_ARGS=$@
   cd $CMAKE_DIR
-  build_for_android armeabi-v7a android-21 debug ${CMAKE_ARGS[@]}
+  #build_for_android armeabi-v7a android-21 debug ${CMAKE_ARGS[@]}
   build_for_android arm64-v8a android-21 debug ${CMAKE_ARGS[@]}
   #build_for_android x86 android-21 debug ${CMAKE_ARGS[@]}
   #build_for_android x86_64 android-21 debug ${CMAKE_ARGS[@]}
@@ -79,6 +79,8 @@ build_library $TOP_DIR/libpng $TOP_DIR/libpng
 cp $TOP_DIR/libpng/scripts/pnglibconf.h.prebuilt $TOP_DIR/libpng/pnglibconf.h
 ZSTD_CMAKE_ARGS=("-DZSTD_BUILD_STATIC=OFF" "-DZSTD_BUILD_PROGRAMS=OFF")
 build_library $TOP_DIR/zstd $TOP_DIR/zstd/build/cmake ${ZSTD_CMAKE_ARGS[@]}
+FREETYPE_CMAKE_ARGS=("-DBUILD_SHARED_LIBS=true")
+build_library $TOP_DIR/freetype $TOP_DIR/freetype ${FREETYPE_CMAKE_ARGS[@]}
 
 # Not necessary, SLD is compiled as CMake subproject
 #SDL_CMAKE_ARGS=("-DHAVE_IMMINTRIN_H=OFF")

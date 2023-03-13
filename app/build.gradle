@@ -21,7 +21,7 @@ android {
         versionName "1.0"
         externalNativeBuild {
             cmake {
-                arguments "-DANDROID_APP_PLATFORM=android-21", "-DANDROID_STL=c++_static", "-DSIMUTRANS_BACKEND=sdl2", "-DSIMUTRANS_USE_ZSTD=ON", "-DSIMUTRANS_USE_FLUIDSYNTH_MIDI=OFF", "-DSIMUTRANS_USE_FREETYPE=OFF", "-DSIMUTRANS_MULTI_THREAD=OFF"
+                arguments "-DANDROID_APP_PLATFORM=android-21", "-DANDROID_STL=c++_static", "-DSIMUTRANS_BACKEND=sdl2", "-DSIMUTRANS_USE_ZSTD=ON", "-DSIMUTRANS_USE_FLUIDSYNTH_MIDI=OFF", "-DSIMUTRANS_USE_FREETYPE=ON", "-DSIMUTRANS_MULTI_THREAD=OFF"
                 // abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
                 abiFilters 'arm64-v8a'
             }
