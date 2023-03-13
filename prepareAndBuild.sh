@@ -12,7 +12,7 @@ fi
 
 # Assets
 ./simutrans/src/android/AndroidPreBuild.sh
-mv AndroidData ../src/main/assets
+cp -rf simutrans/simutrans/. ../src/main/assets
 
 # Build Android project
 cd ../..
