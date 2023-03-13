@@ -11,12 +11,17 @@ import java.io.*;
 */
 public class Simutrans extends SDLActivity { 
 
-	@Override
+    @Override
     protected String[] getLibraries() {
         return new String[] {
             "SDL2",
             "simutrans"
         };
+    }
+    
+    @Override
+        protected String[] getArguments() {
+        return new String[] {"-autodpi", "-fullscreen"};
     }
 
     @Override
