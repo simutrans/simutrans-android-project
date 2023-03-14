@@ -26,13 +26,15 @@ public class Simutrans extends SDLActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.v("Simutrans", "Interno: " + this.getFilesDir().getAbsolutePath());
-        Log.v("Simutrans", "Externo: " + getExternalFilesDir(null).getAbsolutePath());
-        try {
-            // TODO: Do this only once at installation
-            //copyDirorfileFromAssetManager("", "");
-        } catch (Exception e) {
-            Log.v("Simutrans", "Error:" + e.getMessage());
+        File f = new File(getExternalFilesDir(null).getAbsolutePath() + "/config/simuconf.tab");
+        if(!f.exists()) { 
+            Log.v("Simutrans", "Unpacking assets"); 
+            try {
+                // TODO: Do this every update, not only on first install
+                copyDirorfileFromAssetManager("", "");
+            } catch (IOException e) {
+                Log.v("Simutrans", "Error unpacking assets:" + e.getMessage());
+            }
         }
         super.onCreate(savedInstanceState);
     }
@@ -41,7 +43,6 @@ public class Simutrans extends SDLActivity {
     {
         String sd_path = getExternalFilesDir(null).getAbsolutePath();
         String dest_dir_path = sd_path + "/" + arg_destinationDir;
-        Log.v("Simutrans", "dest_dir_path: " + dest_dir_path);
         File dest_dir = new File(dest_dir_path);
 
         createDir(dest_dir);
