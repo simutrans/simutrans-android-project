@@ -61,14 +61,14 @@ function build_library {
   shift 2
   CMAKE_ARGS=$@
   cd $CMAKE_DIR
-  #build_for_android armeabi-v7a android-21 debug ${CMAKE_ARGS[@]}
-  build_for_android arm64-v8a android-21 debug ${CMAKE_ARGS[@]}
-  #build_for_android x86 android-21 debug ${CMAKE_ARGS[@]}
-  #build_for_android x86_64 android-21 debug ${CMAKE_ARGS[@]}
-  #build_for_android armeabi-v7a android-21 release ${CMAKE_ARGS[@]}
-  #build_for_android arm64-v8a android-21 release ${CMAKE_ARGS[@]}
-  #build_for_android x86 android-21 release ${CMAKE_ARGS[@]}
-  #build_for_android x86_64 android-21 release ${CMAKE_ARGS[@]}
+  #build_for_android armeabi-v7a android-24 debug ${CMAKE_ARGS[@]}
+  build_for_android arm64-v8a android-24 debug ${CMAKE_ARGS[@]}
+  #build_for_android x86 android-24 debug ${CMAKE_ARGS[@]}
+  #build_for_android x86_64 android-24 debug ${CMAKE_ARGS[@]}
+  #build_for_android armeabi-v7a android-24 release ${CMAKE_ARGS[@]}
+  #build_for_android arm64-v8a android-24 release ${CMAKE_ARGS[@]}
+  #build_for_android x86 android-24 release ${CMAKE_ARGS[@]}
+  #build_for_android x86_64 android-24 release ${CMAKE_ARGS[@]}
   cd $TOP_DIR
 }
 
