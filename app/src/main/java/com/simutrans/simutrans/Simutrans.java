@@ -36,7 +36,7 @@ public class Simutrans extends SDLActivity {
     }
 
     private void unpackAssetsIfNeeded() {
-        String versionFilePath = getExternalFilesDir(null).getAbsolutePath() + "/config/version";
+        String versionFilePath = getFilesDir().getAbsolutePath() + "/config/version";
         if(isInstallOrUpdate(versionFilePath)) { 
             Log.v("Simutrans", "Version update or new install: Unpacking assets");
             try {
@@ -74,7 +74,7 @@ public class Simutrans extends SDLActivity {
 
     private String copyDirorfileFromAssetManager(String arg_assetDir, String arg_destinationDir) throws IOException
     {
-        String sd_path = getExternalFilesDir(null).getAbsolutePath();
+        String sd_path = getFilesDir().getAbsolutePath();
         String dest_dir_path = sd_path + "/" + arg_destinationDir;
         File dest_dir = new File(dest_dir_path);
 
