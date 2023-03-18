@@ -14,6 +14,6 @@
 - sdkmanager --install "ndk;25.1.8937393"
 
 
-3. Run (adjusting variables)
+3. Build (adjusting variables)
 
 ``JAVA_HOME=/usr/lib/jvm/java-17-openjdk ANDROID_HOME=/opt/android-sdk ANDROID_NDK=/opt/android-sdk/ndk/25.1.8937393 ./prepareAndBuild.sh``
