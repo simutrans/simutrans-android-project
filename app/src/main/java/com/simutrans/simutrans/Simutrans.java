@@ -136,4 +136,10 @@ public class Simutrans extends SDLActivity {
     
     private native String getVersion();
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.exit(0); // Otherwise Simutrans will not be able to initialize static objects at next start
+    }
+
 } 
