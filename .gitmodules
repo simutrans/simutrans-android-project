@@ -14,10 +14,6 @@
 [submodule "app/jni/zstd"]
 	path = app/jni/zstd
 	url = https://github.com/facebook/zstd
-[submodule "app/jni/simutrans"]
-	path = app/jni/simutrans
-	url = https://github.com/Roboron3042/simutrans
-	branch = android-cmake
 [submodule "app/jni/freetype"]
 	path = app/jni/freetype
 	url = https://github.com/freetype/freetype

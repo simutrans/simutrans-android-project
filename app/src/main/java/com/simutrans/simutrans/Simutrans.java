@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.res.AssetManager;
 import java.io.*;
+import java.util.Scanner;
 
 /**
 * A sample wrapper class that just calls SDLActivity
 */
 public class Simutrans extends SDLActivity { 
+
+    static {
+        System.loadLibrary("simutrans");
+    }
 
     @Override
     protected String[] getLibraries() {
@@ -21,25 +26,53 @@ public class Simutrans extends SDLActivity {
     
     @Override
         protected String[] getArguments() {
-        return new String[] {"-autodpi", "-fullscreen"};
+        return new String[] {"-autodpi", "-fullscreen", "-log", "-debug 3"};
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        File f = new File(getExternalFilesDir(null).getAbsolutePath() + "/config/simuconf.tab");
-        if(!f.exists()) { 
-            Log.v("Simutrans", "Unpacking assets"); 
-            try {
-                // TODO: Do this every update, not only on first install
-                copyDirorfileFromAssetManager("", "");
-            } catch (IOException e) {
-                Log.v("Simutrans", "Error unpacking assets:" + e.getMessage());
-            }
-        }
+        unpackAssetsIfNeeded();
         super.onCreate(savedInstanceState);
     }
 
-    public String copyDirorfileFromAssetManager(String arg_assetDir, String arg_destinationDir) throws IOException
+    private void unpackAssetsIfNeeded() {
+        String versionFilePath = getExternalFilesDir(null).getAbsolutePath() + "/config/version";
+        if(isInstallOrUpdate(versionFilePath)) { 
+            Log.v("Simutrans", "Version update or new install: Unpacking assets");
+            try {
+                // TODO: Do this every update, not only on first install
+                copyDirorfileFromAssetManager("", "");
+                FileWriter myWriter = new FileWriter(versionFilePath);
+                myWriter.write(getVersion());
+                myWriter.close();
+            } catch (IOException e) {
+                Log.v("Simutrans", "Error unpacking assets:" + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean isInstallOrUpdate(String versionFilePath) {
+        File versionFile = new File(versionFilePath);
+        Log.v("Simutrans", "Current Version: " + getVersion());
+        try {
+            Scanner version = new Scanner(versionFile);
+            if ( version.hasNextLine() && version.nextLine().equals(getVersion())  ) {
+                return false;
+            }
+            return true;
+        } catch (FileNotFoundException e) {
+            try {
+                versionFile.createNewFile();
+            }
+            catch (IOException ioe) {
+                Log.v("Simutrans", "Can't create version file:" + ioe.getMessage());
+            }
+        }
+        return true;
+    }
+
+    private String copyDirorfileFromAssetManager(String arg_assetDir, String arg_destinationDir) throws IOException
     {
         String sd_path = getExternalFilesDir(null).getAbsolutePath();
         String dest_dir_path = sd_path + "/" + arg_destinationDir;
@@ -69,7 +102,7 @@ public class Simutrans extends SDLActivity {
     }
 
 
-    public void copyAssetFile(String assetFilePath, String destinationFilePath) throws IOException {
+    private void copyAssetFile(String assetFilePath, String destinationFilePath) throws IOException {
         InputStream in = getApplicationContext().getAssets().open(assetFilePath);
         OutputStream out = new FileOutputStream(destinationFilePath);
 
@@ -81,14 +114,14 @@ public class Simutrans extends SDLActivity {
         out.close();
     }
 
-    public String addTrailingSlash(String path) {
+    private String addTrailingSlash(String path) {
         if (path.length() > 0 && path.charAt(path.length() - 1) != '/') {
             path += "/";
         }
         return path;
     }
 
-    public void createDir(File dir) throws IOException {
+    private void createDir(File dir) throws IOException {
         if (dir.exists()) {
             if (!dir.isDirectory()) {
                 throw new IOException("Can't create directory, a file is in the way");
@@ -100,5 +133,7 @@ public class Simutrans extends SDLActivity {
             }
         }
     }
+    
+    private native String getVersion();
 
 } 
