@@ -27,4 +27,4 @@ cp -rf simutrans/simutrans/. ../src/main/assets
 cd ../..
 cp -r simutrans/jni/SDL/android-project/app/src/main/java simutrans/src/main
 ./gradlew assembleRelease
-./gradlew buildRelease
+./gradlew bundleRelease
