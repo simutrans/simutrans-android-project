@@ -3,7 +3,7 @@
 git submodule init
 git submodule update
 
-cd app/jni
+cd simutrans/jni
 
 # Build libraries
 if ! ./build_libraries.sh; then
@@ -20,5 +20,5 @@ cp -rf simutrans/simutrans/. ../src/main/assets
 
 # Build Android project
 cd ../..
-cp -r app/jni/SDL/android-project/app/src/main/java app/src/main
+cp -r simutrans/jni/SDL/android-project/app/src/main/java simutrans/src/main
 ./gradlew assembleDebug
