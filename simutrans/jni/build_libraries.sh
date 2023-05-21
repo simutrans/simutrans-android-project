@@ -62,11 +62,11 @@ function build_library {
   CMAKE_ARGS=$@
   cd $CMAKE_DIR
   #build_for_android armeabi-v7a android-24 debug ${CMAKE_ARGS[@]}
-  build_for_android arm64-v8a android-24 debug ${CMAKE_ARGS[@]}
+  #build_for_android arm64-v8a android-24 debug ${CMAKE_ARGS[@]}
   #build_for_android x86 android-24 debug ${CMAKE_ARGS[@]}
   #build_for_android x86_64 android-24 debug ${CMAKE_ARGS[@]}
   #build_for_android armeabi-v7a android-24 release ${CMAKE_ARGS[@]}
-  #build_for_android arm64-v8a android-24 release ${CMAKE_ARGS[@]}
+  build_for_android arm64-v8a android-24 release ${CMAKE_ARGS[@]}
   #build_for_android x86 android-24 release ${CMAKE_ARGS[@]}
   #build_for_android x86_64 android-24 release ${CMAKE_ARGS[@]}
   cd $TOP_DIR
@@ -82,6 +82,6 @@ build_library $TOP_DIR/zstd $TOP_DIR/zstd/build/cmake ${ZSTD_CMAKE_ARGS[@]}
 FREETYPE_CMAKE_ARGS=("-DBUILD_SHARED_LIBS=true")
 build_library $TOP_DIR/freetype $TOP_DIR/freetype ${FREETYPE_CMAKE_ARGS[@]}
 
-# Not necessary, SLD is compiled as CMake subproject
+# Not necessary, SDL is compiled as CMake subproject
 #SDL_CMAKE_ARGS=("-DHAVE_IMMINTRIN_H=OFF")
 #build_library $TOP_DIR/SDL $TOP_DIR/SDL  ${SDL_CMAKE_ARGS[@]}

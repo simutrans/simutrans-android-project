@@ -4,5 +4,6 @@ simutrans/build/
 simutrans/src/main/assets/
 simutrans/src/main/java/org
 simutrans/jni/fluidsynth*
+simutrans/jni/simutrans
 .idea
 local.properties

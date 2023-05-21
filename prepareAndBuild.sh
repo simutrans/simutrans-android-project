@@ -1,4 +1,9 @@
 
+if [ ! -d "simutrans/jni/simutrans" ]; then 
+  echo "First you must copy simutrans source directory to simutrans/jni/simutrans"
+  exit 1
+fi
+
 # Init submodules
 git submodule init
 git submodule update
@@ -21,4 +26,5 @@ cp -rf simutrans/simutrans/. ../src/main/assets
 # Build Android project
 cd ../..
 cp -r simutrans/jni/SDL/android-project/app/src/main/java simutrans/src/main
-./gradlew assembleDebug
+./gradlew assembleRelease
+./gradlew buildRelease
