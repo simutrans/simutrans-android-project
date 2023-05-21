@@ -1,20 +1,11 @@
-def buildAsLibrary = project.hasProperty('BUILD_AS_LIBRARY');
-def buildAsApplication = !buildAsLibrary
-if (buildAsApplication) {
-    apply plugin: 'com.android.application'
-}
-else {
-    apply plugin: 'com.android.library'
-}
+apply plugin: 'com.android.application'
 
 android {
     namespace "com.simutrans.simutrans"
     compileSdkVersion 31
     
     defaultConfig {
-        if (buildAsApplication) {
-            applicationId "com.simutrans.simutrans"
-        }
+        applicationId "com.simutrans.simutrans"
         minSdkVersion 24
         targetSdkVersion 31
         versionCode 1
@@ -50,18 +41,6 @@ android {
     }
     lintOptions {
         abortOnError false
-    }
-    
-    if (buildAsLibrary) {
-        libraryVariants.all { variant ->
-            variant.outputs.each { output ->
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith(".aar")) {
-                    def fileName = "com.simutrans.simutrans.aar";
-                    output.outputFile = new File(outputFile.parent, fileName);
-                }
-            }
-        }
     }
 }
 
