@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.simutrans.simutrans"
+    namespace "com.simutrans"
     compileSdkVersion 33
     
     defaultConfig {
-        applicationId "com.simutrans.simutrans"
+        applicationId "com.simutrans"
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 1
