@@ -23,8 +23,13 @@ unzip fluidsynth-*.zip -d fluidsynth
 ./simutrans/src/android/AndroidPreBuild.sh
 cp -rf simutrans/simutrans/. ../src/main/assets
 
+# Revision
+cd simutrans/tools
+REVISION=$(./get_revision.sh)
+sed -i "s/versionCode [0-9]\+/versionCode $REVISION/" ../../../build.gradle
+
 # Build Android project
-cd ../..
+cd ../../../..
 cp -r simutrans/jni/SDL/android-project/app/src/main/java simutrans/src/main
 ./gradlew assembleRelease
 ./gradlew bundleRelease

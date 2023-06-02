@@ -8,8 +8,8 @@ android {
         applicationId "com.simutrans"
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode System.getenv("REV").get_number()
-        versionName "1.0"
+        versionCode 0123
+        versionName "123.0.2 Nightly"
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID_APP_PLATFORM=android-24", "-DANDROID_STL=c++_shared", "-DSIMUTRANS_BACKEND=sdl2", "-DSIMUTRANS_USE_ZSTD=ON", "-DSIMUTRANS_USE_FLUIDSYNTH_MIDI=ON", "-DSIMUTRANS_USE_FREETYPE=ON", "-DSIMUTRANS_MULTI_THREAD=OFF", "-DSIMUTRANS_USE_OWN_PAKINSTALL=ON"
