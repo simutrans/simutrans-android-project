@@ -8,7 +8,7 @@ android {
         applicationId "com.simutrans"
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode System.getenv("REV")
+        versionCode System.getenv("REV").get_number()
         versionName "1.0"
         externalNativeBuild {
             cmake {
