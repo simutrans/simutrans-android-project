@@ -1,4 +1,4 @@
-package com.simutrans.simutrans;
+package com.simutrans;
 
 import org.libsdl.app.SDLActivity;
 import android.os.Bundle;
