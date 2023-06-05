@@ -13,14 +13,14 @@ import java.util.Scanner;
 public class Simutrans extends SDLActivity { 
 
     static {
-        System.loadLibrary("Simutrans");
+        System.loadLibrary("simutrans");
     }
 
     @Override
     protected String[] getLibraries() {
         return new String[] {
             "SDL2",
-            "Simutrans"
+            "simutrans"
         };
     }
     
