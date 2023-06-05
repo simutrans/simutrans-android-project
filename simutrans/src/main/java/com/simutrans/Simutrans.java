@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
 * A sample wrapper class that just calls SDLActivity
 */
-public class simutrans extends SDLActivity { 
+public class Simutrans extends SDLActivity { 
 
     static {
         System.loadLibrary("Simutrans");
