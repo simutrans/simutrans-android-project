@@ -8,7 +8,7 @@ android {
         applicationId "com.simutrans"
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 0123
+        versionCode 10912
         versionName "123.0.2 Nightly"
         externalNativeBuild {
             cmake {
