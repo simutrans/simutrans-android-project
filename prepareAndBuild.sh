@@ -16,7 +16,7 @@ if ! ./build_libraries.sh; then
 fi
 
 # Fluidsynth is a PITA to build; using the prebuilt release instead
-wget https://github.com/FluidSynth/fluidsynth/releases/download/v2.3.1/fluidsynth-2.3.1-android24.zip
+wget https://github.com/FluidSynth/fluidsynth/releases/download/v2.3.5/fluidsynth-2.3.5-android24.zip
 unzip fluidsynth-*.zip -d fluidsynth
 
 # Assets
