@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     namespace "com.simutrans"
-    compileSdkVersion 33
+    compileSdkVersion 34
     
     defaultConfig {
         applicationId "com.simutrans"
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 10912
         versionName "124.0.1 Nightly"
         externalNativeBuild {
