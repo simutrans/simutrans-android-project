@@ -28,8 +28,13 @@ cd simutrans/tools
 REVISION=$(./get_revision.sh)
 sed -i "s/versionCode [0-9]\+/versionCode $REVISION/" ../../../build.gradle
 
-# Build Android project
+# Get the version and nightly status
 cd ../../../..
+VERSION=`sed -n 's/#define SIM_VERSION_MAJOR *\([0-9]*\)$/\1/ p' <simutrans/jni/simutrans/src/simutrans/simversion.h`.`sed -n 's/#define SIM_VERSION_MINOR *\([0-9]*\)$/\1/ p' <simutrans/jni/simutrans/src/simutrans/simversion.h`.`sed -n 's/#define SIM_VERSION_PATCH *\([0-9]*\)$/\1/ p' <simutrans/jni/simutrans/src/simutrans/simversion.h`
+NIGHTLY=`sed -n 's/#define SIM_VERSION_BUILD SIM_BUILD_NIGHTLY/ Nightly/ p' <simutrans/jni/simutrans/src/simutrans/simversion.h``sed -n 's/#define SIM_VERSION_BUILD SIM_BUILD_RELEASE_CANDIDATE/ Release candidate/ p' <simutrans/jni/simutrans/src/simutrans/simversion.h`
+sed -i 's/versionName.*$/versionName "'"$VERSION$NIGHTLY"'"/' simutrans/build.gradle
+
+# Build Android project
 cp -r simutrans/jni/SDL/android-project/app/src/main/java simutrans/src/main
 ./gradlew assembleRelease
 ./gradlew bundleRelease
