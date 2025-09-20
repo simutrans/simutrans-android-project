@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.simutrans"
         minSdkVersion 24
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 10912
         versionName "124.0.1 Nightly"
         externalNativeBuild {
