@@ -10,6 +10,10 @@ if [ -z "$JAVA_HOME" ]; then
   exit 1
 fi
 
+# we need the previous state to build 16k pages
+cd SDL
+git revert 53dbe18  --no-commit
+cd
 
 
 function build_for_android {
