@@ -11,9 +11,10 @@ if [ -z "$JAVA_HOME" ]; then
 fi
 
 # we need the previous state to build 16k pages
-cd SDL
-git revert 53dbe18  --no-commit
-cd
+# cd SDL
+# git revert 53dbe18  --no-commit
+# cd ..
+# but for now it is done in the setup either the shell or the yml
 
 
 function build_for_android {
